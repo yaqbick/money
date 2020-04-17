@@ -17,7 +17,7 @@ if(validate_currency($argv[1]))
       {
          $arg = number_format( (float) $arg, 2, '.', '');
          $money = new Money($currency, $arg);
-         $moneySum->amount = $moneySum->sum_up_with($money);
+         $moneySum->setAmount($moneySum->sumUpWith($money));
       }
       else
       {
@@ -28,6 +28,7 @@ if(validate_currency($argv[1]))
    $formatter = new Formatter();
    $output = $formatter->moneyToString($moneySum);
    echo $output;
+
 }
 else
 {
