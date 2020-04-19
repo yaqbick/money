@@ -1,17 +1,12 @@
 <?php
-// require_once(__DIR__.'/Money.php');
-// require_once(__DIR__.'/MoneyFormatter.php');
-namespace money;
 
-class MoneyToStringFormatter extends Formatter implements MoneyFormatter
+namespace Money;
+
+class MoneyToStringFormatter implements MoneyFormatter
 {
-    public function format(Money $money)
+    public function format(Money $money): string
     {
-        $formattedCurrency = strval($money->getCurrency());
-        $amount = number_format($money->getAmount(), 2, ',', ' ');
-        $formattedAmount = strval($amount);
-        $output =$formattedCurrency.' '.$formattedAmount;
-        return $output;
+        $amount = number_format($money->getAmount(), 2, MoneyFormatter::ODD_SEPARATOR, MoneyFormatter::THOUSAND_SEPARATOR);
+        return $amount . ' ' . $money->getCurrency();
     }
 }
-?>
