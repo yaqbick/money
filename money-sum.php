@@ -1,10 +1,9 @@
 <?php
-namespace money;
-// require(__DIR__.'/vendor/autoload.php');
 
-// require_once(__DIR__.'/Money.php');
-// require_once(__DIR__.'/Formatter.php');
-// require_once(__DIR__.'/MoneyToStringFormatter.php');
+require(__DIR__.'/vendor/autoload.php');
+use Money\Money;
+use Money\MoneyToStringFormatter;
+
 
 unset($argv[0]);
 $currency = $argv[1];
@@ -18,4 +17,3 @@ foreach ($argv as $arg)
 $formatter = new MoneyToStringFormatter();
 $output = $formatter->format($moneySum);
 echo $output;
-?>
